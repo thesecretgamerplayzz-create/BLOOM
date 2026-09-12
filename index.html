@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f4ec">
+  <meta name="description" content="Bloom — your private wellbeing companion">
+
+  <title>Bloom — Mental Buddy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+<header class="topbar">
+
+  <button class="brand" data-target="home">
+    <span class="brand-mark">✦</span>
+    bloom
+  </button>
+
+  <div class="top-actions">
+    <button class="icon-button" id="themeButton" aria-label="Toggle theme">☾</button>
+    <button class="icon-button" id="settingsButton" aria-label="Settings">⚙</button>
+  </div>
+
+</header>
+
+<main>
+
+<!-- ================= CHECK IN ================= -->
+
+<section class="screen" id="checkin">
+
+  <p class="eyebrow" id="todayLabel"></p>
+
+  <h1>How are you<br>feeling today?</h1>
+
+  <p class="intro">
+    There is no right answer. Pick the one that feels closest.
+  </p>
+
+  <div class="mood-grid">
+
+    <button class="mood-card" data-mood="great" data-label="Great" data-score="5">
+      <span class="mood-face">✦</span>
+      <span>Great</span>
+    </button>
+
+    <button class="mood-card" data-mood="good" data-label="Good" data-score="4">
+      <span class="mood-face">☀</span>
+      <span>Good</span>
+    </button>
+
+    <button class="mood-card" data-mood="okay" data-label="Okay" data-score="3">
+      <span class="mood-face">●</span>
+      <span>Okay</span>
+    </button>
+
+    <button class="mood-card" data-mood="low" data-label="Low" data-score="2">
+      <span class="mood-face">☁</span>
+      <span>Low</span>
+    </button>
+
+    <button class="mood-card" data-mood="anxious" data-label="Anxious" data-score="2">
+      <span class="mood-face">≈</span>
+      <span>Anxious</span>
+    </button>
+
+    <button class="mood-card" data-mood="rough" data-label="Rough" data-score="1">
+      <span class="mood-face">☂</span>
+      <span>Rough</span>
+    </button>
+
+  </div>
+
+  <div class="tag-section">
+    <p class="label">What influenced your day? <small>optional</small></p>
+
+    <div class="tag-grid" id="moodFactors">
+
+      <button class="tag" data-factor="Sleep">😴 Sleep</button>
+      <button class="tag" data-factor="School">📚 School</button>
+      <button class="tag" data-factor="Work">💼 Work</button>
+      <button class="tag" data-factor="Family">🏠 Family</button>
+      <button class="tag" data-factor="Friends">🫂 Friends</button>
+      <button class="tag" data-factor="Exercise">🏃 Exercise</button>
+      <button class="tag" data-factor="Stress">🌧️ Stress</button>
+      <button class="tag" data-factor="Free time">🌱 Free time</button>
+
+    </div>
+  </div>
+
+  <button class="text-link" id="skipButton">
+    Skip for today
+  </button>
+
+</section>
+
+
+<!-- ================= REFLECTION ================= -->
+
+<section class="screen" id="reflection">
+
+  <button class="back-button" data-target="checkin">← Back</button>
+
+  <div class="selected-mood">
+    <span id="selectedMoodIcon">☀</span>
+    <span id="selectedMoodText">Good</span>
+  </div>
+
+  <h1>Want to tell me<br>a little more?</h1>
+
+  <p class="intro">
+    Only if you want to.
+  </p>
+
+  <textarea
+    id="reflectionInput"
+    maxlength="500"
+    placeholder="Today I feel this way because…"></textarea>
+
+  <div class="reflection-footer">
+
+    <span id="characterCount">0 / 500</span>
+
+    <button class="primary-button" id="saveCheckin">
+      Save check-in →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= HOME ================= -->
+
+<section class="screen" id="home">
+
+  <div class="home-greeting">
+
+    <div>
+      <p class="eyebrow">YOUR LITTLE SPACE</p>
+      <h1>Hi <span id="homeName">there</span>,</h1>
+    </div>
+
+    <div class="streak-pill">
+      🔥 <strong id="streakCount">0</strong> day
+    </div>
+
+  </div>
+
+  <article class="today-card">
+
+    <span class="card-orb"></span>
+
+    <p>Today you felt</p>
+
+    <h2>
+      <span id="todayMoodIcon">☀</span>
+      <span id="todayMoodLabel">Not checked in</span>
+    </h2>
+
+    <p class="small" id="todayReflection">
+      Every small check-in matters.
+    </p>
+
+    <button class="quiet-button" id="editCheckin">
+      Check in
+    </button>
+
+  </article>
+
+  <h2 class="home-section-title">
+    What do you need right now?
+  </h2>
+
+  <div class="quick-grid">
+
+    <button class="quick-card" data-target="chat">
+      <span>🫂</span>
+      <strong>Talk</strong>
+      <small>Talk to Buddy</small>
+    </button>
+
+    <button class="quick-card" data-target="calm">
+      <span>🌬️</span>
+      <strong>Calm</strong>
+      <small>Breathe & relax</small>
+    </button>
+
+    <button class="quick-card" data-target="journal">
+      <span>📔</span>
+      <strong>Journal</strong>
+      <small>Write your thoughts</small>
+    </button>
+
+    <button class="quick-card" data-target="reframe">
+      <span>💭</span>
+      <strong>Reframe</strong>
+      <small>Change perspective</small>
+    </button>
+
+    <button class="quick-card" data-target="goals">
+      <span>🎯</span>
+      <strong>Goals</strong>
+      <small>Small steps</small>
+    </button>
+
+    <button class="quick-card" data-target="sleep">
+      <span>🌙</span>
+      <strong>Sleep</strong>
+      <small>Wind down</small>
+    </button>
+
+    <button class="quick-card" data-target="grounding">
+      <span>🧘</span>
+      <strong>Ground</strong>
+      <small>5-4-3-2-1</small>
+    </button>
+
+    <button class="quick-card" data-target="focus">
+      <span>⏱️</span>
+      <strong>Focus</strong>
+      <small>Pomodoro</small>
+    </button>
+
+  </div>
+
+  <article class="wellbeing-card">
+
+    <div class="section-heading">
+      <h2>Your wellbeing</h2>
+      <button class="small-link" data-target="patterns">View details →</button>
+    </div>
+
+    <div class="progress-row">
+      <span>Mood</span>
+      <div class="progress"><span id="moodProgress"></span></div>
+      <strong id="moodPercent">0%</strong>
+    </div>
+
+    <div class="progress-row">
+      <span>Journaling</span>
+      <div class="progress"><span id="journalProgress"></span></div>
+      <strong id="journalPercent">0%</strong>
+    </div>
+
+    <div class="progress-row">
+      <span>Calm</span>
+      <div class="progress"><span id="calmProgress"></span></div>
+      <strong id="calmPercent">0%</strong>
+    </div>
+
+  </article>
+
+  <article class="nudge-card">
+
+    <div class="nudge-icon">♡</div>
+
+    <div>
+      <h3>A thought for you</h3>
+      <p id="nudgeText">
+        You do not have to have it all figured out today.
+      </p>
+    </div>
+
+  </article>
+
+  <article class="timeline-preview">
+
+    <div class="section-heading">
+      <h2>Recent Bloom moments</h2>
+      <button class="small-link" data-target="timeline">See all →</button>
+    </div>
+
+    <div id="timelinePreview"></div>
+
+  </article>
+
+  <button class="support-button" id="supportButton">
+    🆘 Need support right now?
+  </button>
+
+</section>
+
+
+<!-- ================= CHAT ================= -->
+
+<section class="screen" id="chat">
+
+  <div class="chat-header">
+
+    <div>
+      <p class="eyebrow">BLOOM COMPANION</p>
+      <h1 id="chatTitle">A quiet place to talk</h1>
+    </div>
+
+    <span class="private-badge">On this device</span>
+
+  </div>
+
+  <div class="chat-toolbar">
+
+    <select id="conversationSelect">
+      <option value="">New conversation</option>
+    </select>
+
+    <button class="secondary-button" id="newChat">+ New</button>
+
+    <button class="secondary-button" id="searchChatButton">🔎</button>
+
+  </div>
+
+  <div class="buddy-selector">
+
+    <button data-personality="calm" class="personality active">🧘 Calm</button>
+    <button data-personality="friendly" class="personality">😊 Friendly</button>
+    <button data-personality="motivator" class="personality">💪 Motivator</button>
+    <button data-personality="student" class="personality">📚 Student</button>
+
+  </div>
+
+  <div class="chat-messages" id="chatMessages"></div>
+
+  <div class="chat-suggestions">
+
+    <button data-chat="I don't know what I'm feeling.">
+      I don't know what I'm feeling
+    </button>
+
+    <button data-chat="I'm stressed today.">
+      I'm stressed
+    </button>
+
+    <button data-chat="I need motivation.">
+      I need motivation
+    </button>
+
+    <button data-chat="I just want someone to listen.">
+      Just listen
+    </button>
+
+  </div>
+
+  <form class="chat-compose" id="chatForm">
+
+    <input
+      id="chatInput"
+      maxlength="1000"
+      placeholder="Write what's on your mind…"
+      autocomplete="off">
+
+    <button type="button" id="voiceButton">🎙️</button>
+
+    <button aria-label="Send" type="submit">↑</button>
+
+  </form>
+
+  <div class="chat-actions">
+
+    <button id="clearChat">Clear</button>
+    <button id="deleteConversation">Delete chat</button>
+
+  </div>
+
+  <p class="chat-note">
+    Bloom is a wellbeing companion, not a therapist or emergency service.
+  </p>
+
+</section>
+
+
+<!-- ================= JOURNAL ================= -->
+
+<section class="screen" id="journal">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">PRIVATE JOURNAL</p>
+
+  <h1>Put it into<br>words.</h1>
+
+  <p class="intro">
+    Write anything. There is no perfect journal entry.
+  </p>
+
+  <input
+    class="search-input"
+    id="journalSearch"
+    placeholder="Search your journal…">
+
+  <textarea
+    id="journalInput"
+    maxlength="3000"
+    placeholder="Dear Bloom…"></textarea>
+
+  <div class="journal-actions">
+
+    <button class="primary-button" id="saveJournal">
+      Save journal
+    </button>
+
+    <button class="secondary-button" id="clearJournal">
+      Clear
+    </button>
+
+  </div>
+
+  <div class="journal-history" id="journalHistory"></div>
+
+</section>
+
+
+<!-- ================= CALM ================= -->
+
+<section class="screen calm-screen" id="calm">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">CALM SPACE</p>
+
+  <h1>Let's slow<br>things down.</h1>
+
+  <div class="exercise-tabs">
+
+    <button class="exercise active" data-exercise="classic">Classic</button>
+    <button class="exercise" data-exercise="box">Box</button>
+    <button class="exercise" data-exercise="478">4-7-8</button>
+
+  </div>
+
+  <div class="breathing-circle" id="breathingCircle">
+    <span id="breathingText">Ready</span>
+  </div>
+
+  <p class="timer-text" id="breathingTimer">60 seconds</p>
+
+  <button class="primary-button" id="startBreathing">
+    Start breathing
+  </button>
+
+  <div class="calm-tips">
+    <div>🌬️ Breathe slowly</div>
+    <div>🫶 Relax your shoulders</div>
+    <div>🌱 Focus only on this moment</div>
+  </div>
+
+</section>
+
+
+<!-- ================= GROUNDING ================= -->
+
+<section class="screen" id="grounding">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">GROUNDING</p>
+
+  <h1>Come back<br>to the present.</h1>
+
+  <p class="intro">
+    Look around you and notice your surroundings.
+  </p>
+
+  <div class="grounding-step" id="groundingStep"></div>
+
+  <button class="primary-button" id="groundingNext">
+    I've done it →
+  </button>
+
+</section>
+
+
+<!-- ================= REFRAME ================= -->
+
+<section class="screen" id="reframe">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">THOUGHT REFRAMER</p>
+
+  <h1>A thought<br>is not always a fact.</h1>
+
+  <p class="intro">
+    Tell Bloom the thought that is bothering you.
+  </p>
+
+  <textarea
+    id="thoughtInput"
+    maxlength="1000"
+    placeholder="Example: I'm going to fail everything…"></textarea>
+
+  <button class="primary-button full-button" id="reframeButton">
+    Help me reframe →
+  </button>
+
+  <article class="reframe-result" id="reframeResult">
+    <span>💭</span>
+    <p>Your balanced perspective will appear here.</p>
+  </article>
+
+</section>
+
+
+<!-- ================= GOALS ================= -->
+
+<section class="screen" id="goals">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">SMALL STEPS</p>
+
+  <h1>What are you<br>working toward?</h1>
+
+  <div class="goal-input">
+
+    <input
+      id="goalInput"
+      maxlength="150"
+      placeholder="Example: Study for 30 minutes">
+
+    <button id="addGoal">+</button>
+
+  </div>
+
+  <div class="goal-tools">
+
+    <button class="tag active" data-goal-filter="all">All</button>
+    <button class="tag" data-goal-filter="active">Active</button>
+    <button class="tag" data-goal-filter="completed">Completed</button>
+
+  </div>
+
+  <div id="goalList" class="goal-list"></div>
+
+</section>
+
+
+<!-- ================= SLEEP ================= -->
+
+<section class="screen sleep-screen" id="sleep">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">NIGHT MODE</p>
+
+  <h1>Nothing else<br>needs to happen tonight.</h1>
+
+  <div class="sleep-card">
+
+    <span>🌙</span>
+
+    <h2>Leave today behind.</h2>
+
+    <p>
+      Take a slow breath. Think of one thing that went okay today.
+    </p>
+
+  </div>
+
+  <h2>How did you sleep?</h2>
+
+  <div class="sleep-form">
+
+    <label>
+      Bedtime
+      <input type="time" id="sleepBed">
+    </label>
+
+    <label>
+      Wake time
+      <input type="time" id="sleepWake">
+    </label>
+
+    <label>
+      Quality
+      <select id="sleepQuality">
+        <option value="5">Excellent</option>
+        <option value="4">Good</option>
+        <option value="3">Okay</option>
+        <option value="2">Poor</option>
+        <option value="1">Very poor</option>
+      </select>
+    </label>
+
+  </div>
+
+  <button class="primary-button full-button" id="saveSleep">
+    Save sleep
+  </button>
+
+  <button class="secondary-button full-button" id="sleepStart">
+    Start wind-down
+  </button>
+
+  <p class="sleep-message" id="sleepMessage"></p>
+
+</section>
+
+
+<!-- ================= FOCUS ================= -->
+
+<section class="screen" id="focus">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">FOCUS SPACE</p>
+
+  <h1>One small step<br>at a time.</h1>
+
+  <div class="focus-circle">
+    <strong id="focusTimer">25:00</strong>
+    <span id="focusStatus">Ready</span>
+  </div>
+
+  <div class="focus-controls">
+
+    <button class="primary-button" id="focusStart">
+      Start
+    </button>
+
+    <button class="secondary-button" id="focusReset">
+      Reset
+    </button>
+
+  </div>
+
+  <p class="intro">
+    Try 25 minutes of focus followed by a short break.
+  </p>
+
+</section>
+
+
+<!-- ================= GAMES ================= -->
+
+<section class="screen" id="games">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">MINI WELLNESS</p>
+
+  <h1>A tiny break<br>for your brain.</h1>
+
+  <div class="game-grid">
+
+    <button class="game-card" id="gratitudeGame">
+      💛
+      <strong>Gratitude</strong>
+      <small>Think of something good.</small>
+    </button>
+
+    <button class="game-card" id="positiveGame">
+      🌱
+      <strong>Positive word</strong>
+      <small>Choose a word for today.</small>
+    </button>
+
+    <button class="game-card" id="breathingGame">
+      🌬️
+      <strong>Breathing</strong>
+      <small>One peaceful minute.</small>
+    </button>
+
+  </div>
+
+  <article class="game-result" id="gameResult">
+    Choose an activity.
+  </article>
+
+</section>
+
+
+<!-- ================= PROGRESS ================= -->
+
+<section class="screen" id="patterns">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">YOUR PROGRESS</p>
+
+  <h1>Small patterns,<br>useful clues.</h1>
+
+  <div class="stats-grid">
+
+    <article class="stat-card">
+      <strong id="statMood">0</strong>
+      <span>Check-ins</span>
+    </article>
+
+    <article class="stat-card">
+      <strong id="statAverage">—</strong>
+      <span>Average mood</span>
+    </article>
+
+    <article class="stat-card">
+      <strong id="statJournals">0</strong>
+      <span>Journals</span>
+    </article>
+
+    <article class="stat-card">
+      <strong id="statCalm">0</strong>
+      <span>Calm sessions</span>
+    </article>
+
+  </div>
+
+  <article class="insight-card">
+
+    <span class="insight-symbol">◒</span>
+
+    <div>
+      <p class="eyebrow">GENTLE OBSERVATION</p>
+
+      <h2 id="patternHeadline">
+        Keep checking in to discover your patterns.
+      </h2>
+
+      <p id="patternCopy">
+        Your patterns will appear here over time.
+      </p>
+    </div>
+
+  </article>
+
+  <h2>Mood calendar</h2>
+
+  <div class="mood-calendar" id="moodCalendar"></div>
+
+  <h2>Recent check-ins</h2>
+
+  <div id="historyList" class="history-list"></div>
+
+</section>
+
+
+<!-- ================= TIMELINE ================= -->
+
+<section class="screen" id="timeline">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">BLOOM TIMELINE</p>
+
+  <h1>Your journey<br>so far.</h1>
+
+  <p class="intro">
+    A gentle record of your Bloom moments.
+  </p>
+
+  <div id="timelineList" class="timeline-list"></div>
+
+</section>
+
+
+<!-- ================= ACHIEVEMENTS ================= -->
+
+<section class="screen" id="achievements">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">LITTLE WINS</p>
+
+  <h1>Every small step<br>counts.</h1>
+
+  <div class="achievement-grid" id="achievementList"></div>
+
+</section>
+
+
+<!-- ================= PRIVACY / SETTINGS ================= -->
+
+<section class="screen" id="privacy">
+
+  <button class="back-button" data-target="home">← Back</button>
+
+  <p class="eyebrow">YOU ARE IN CONTROL</p>
+
+  <h1>Settings</h1>
+
+  <article class="settings-card">
+
+    <h2>Your profile</h2>
+
+    <label>
+      Name
+      <input id="profileName" maxlength="40" placeholder="Your name">
+    </label>
+
+    <button class="primary-button" id="saveProfile">
+      Save profile
+    </button>
+
+  </article>
+
+  <article class="privacy-card">
+
+    <div>
+      <h2>Buddy memory</h2>
+      <p>
+        Allow Bloom to remember selected things you tell it.
+      </p>
+    </div>
+
+    <label class="switch">
+      <input id="memoryConsent" type="checkbox">
+      <span></span>
+    </label>
+
+  </article>
+
+  <article class="settings-card">
+
+    <div class="section-heading">
+      <h2>Memories</h2>
+      <button class="small-link" id="clearMemory">Clear all</button>
+    </div>
+
+    <div id="memoryList"></div>
+
+  </article>
+
+  <article class="privacy-card">
+
+    <div>
+      <h2>Research sharing</h2>
+      <p>
+        Anonymous mood statistics can be shared only when enabled.
+      </p>
+    </div>
+
+    <label class="switch">
+      <input id="researchConsent" type="checkbox">
+      <span></span>
+    </label>
+
+  </article>
+
+  <article class="settings-card">
+
+    <h2>Reminders</h2>
+
+    <label class="checkbox-row">
+      <input type="checkbox" id="remindersEnabled">
+      Daily reminder
+    </label>
+
+    <input type="time" id="reminderTime">
+
+    <button class="secondary-button full-button" id="requestNotifications">
+      Enable browser notifications
+    </button>
+
+  </article>
+
+  <article class="settings-card">
+
+    <h2>Appearance</h2>
+
+    <div class="theme-grid">
+
+      <button class="theme-choice" data-theme="light">☀️ Light</button>
+      <button class="theme-choice" data-theme="dark">🌙 Dark</button>
+      <button class="theme-choice" data-theme="sage">🌱 Sage</button>
+
+    </div>
+
+    <label>
+      Text size
+      <select id="fontSize">
+        <option value="normal">Normal</option>
+        <option value="large">Large</option>
+        <option value="xl">Extra large</option>
+      </select>
+    </label>
+
+  </article>
+
+  <div class="settings-actions">
+
+    <button class="secondary-button full-button" id="exportData">
+      📦 Export all my data
+    </button>
+
+    <label class="secondary-button full-button import-button">
+      📥 Import backup
+      <input type="file" id="importData" accept=".json">
+    </label>
+
+    <button class="danger-link" id="eraseData">
+      Erase all my data
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SUPPORT ================= -->
+
+<section class="screen emergency-screen" id="support">
+
+  <button class="back-button light" data-target="home">← Back</button>
+
+  <span class="emergency-icon">♡</span>
+
+  <p class="eyebrow">YOU DESERVE SUPPORT</p>
+
+  <h1>You don't have to go through this alone.</h1>
+
+  <p class="support-copy">
+    If you might hurt yourself or feel in immediate danger,
+    please contact local emergency services or talk to a trusted
+    person nearby.
+  </p>
+
+  <a class="support-action" href="tel:112">
+    Call emergency services
+    <span>→</span>
+  </a>
+
+  <a
+    class="support-action secondary"
+    href="https://findahelpline.com"
+    target="_blank"
+    rel="noreferrer">
+    Find a local helpline
+    <span>↗</span>
+  </a>
+
+  <p class="support-footnote">
+    A trusted friend, parent, teacher, counsellor or another
+    supportive person can also help.
+  </p>
+
+</section>
+
+</main>
+
+
+<nav class="bottom-nav">
+
+  <button class="nav-item active" data-target="home">
+    <span>⌂</span>
+    Home
+  </button>
+
+  <button class="nav-item" data-target="chat">
+    <span>◌</span>
+    Talk
+  </button>
+
+  <button class="nav-item" data-target="journal">
+    <span>▤</span>
+    Journal
+  </button>
+
+  <button class="nav-item" data-target="patterns">
+    <span>⌁</span>
+    Progress
+  </button>
+
+</nav>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

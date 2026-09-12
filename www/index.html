@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f4ec" />
+    <title>Bloom — daily check-in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#checkin" aria-label="Bloom home"><span class="brand-mark">✦</span> bloom</a>
+        <button class="icon-button" id="settingsButton" aria-label="Open privacy settings">⚙</button>
+      </header>
+
+      <main>
+        <section class="screen active" id="checkin" aria-labelledby="checkinTitle">
+          <p class="eyebrow" id="todayLabel">WEDNESDAY, AUGUST 19</p>
+          <h1 id="checkinTitle">How are you<br />feeling today?</h1>
+          <p class="intro">There is no right answer. Pick the one that feels closest.</p>
+
+          <div class="mood-grid" role="group" aria-label="Choose your mood">
+            <button class="mood-card" data-mood="great" data-label="Great" data-score="5"><span class="mood-face">✦</span><span>Great</span></button>
+            <button class="mood-card" data-mood="good" data-label="Good" data-score="4"><span class="mood-face">☀</span><span>Good</span></button>
+            <button class="mood-card" data-mood="okay" data-label="Okay" data-score="3"><span class="mood-face">●</span><span>Okay</span></button>
+            <button class="mood-card" data-mood="low" data-label="Low" data-score="2"><span class="mood-face">☁</span><span>Low</span></button>
+            <button class="mood-card" data-mood="anxious" data-label="Anxious" data-score="2"><span class="mood-face">≈</span><span>Anxious</span></button>
+            <button class="mood-card" data-mood="rough" data-label="Rough" data-score="1"><span class="mood-face">☂</span><span>Rough</span></button>
+          </div>
+
+          <button class="text-link" id="skipButton">Skip for today</button>
+        </section>
+
+        <section class="screen" id="reflection" aria-labelledby="reflectionTitle">
+          <button class="back-button" data-target="checkin">← Back</button>
+          <div class="selected-mood"><span id="selectedMoodIcon">☀</span><span id="selectedMoodText">Good</span></div>
+          <h1 id="reflectionTitle">Want to tell me<br />a little more?</h1>
+          <p class="intro">Only if you want to. This stays on your device.</p>
+          <label class="sr-only" for="reflectionInput">Your reflection</label>
+          <textarea id="reflectionInput" maxlength="280" placeholder="Today I feel this way because…"></textarea>
+          <div class="reflection-footer"><span id="characterCount">0 / 280</span><button class="primary-button" id="saveCheckin">Save check-in <span>→</span></button></div>
+        </section>
+
+        <section class="screen" id="home" aria-labelledby="homeTitle">
+          <div class="home-greeting"><div><p class="eyebrow">YOUR LITTLE SPACE</p><h1 id="homeTitle">Hi there,</h1></div><div class="streak-pill"><span>🔥</span><strong id="streakCount">1</strong> day</div></div>
+          <article class="today-card"><span class="card-orb"></span><p>Today you felt</p><h2><span id="todayMoodIcon">☀</span> <span id="todayMoodLabel">Good</span></h2><p class="small" id="todayReflection">Every small check-in matters.</p><button class="quiet-button" id="editCheckin">Edit check-in</button></article>
+          <div class="section-heading"><h2>Your week</h2><button class="text-button" id="patternsLink">See patterns</button></div>
+          <div class="week-card" id="weekChart" aria-label="Mood history for this week"></div>
+          <article class="nudge-card"><div class="nudge-icon">♡</div><div><h3>A thought for you</h3><p id="nudgeText">You do not have to have it all figured out today.</p></div></article>
+          <button class="support-button" id="supportButton"><span>☏</span> Need support right now?</button>
+        </section>
+
+        <section class="screen" id="chat" aria-labelledby="chatTitle">
+          <div class="chat-header"><div><p class="eyebrow">BLOOM COMPANION</p><h1 id="chatTitle">A quiet place to talk</h1></div><span class="private-badge">On this device</span></div>
+          <div class="chat-messages" id="chatMessages" aria-live="polite">
+            <div class="message bot">Hi. I’m here to listen without judgment. What is on your mind?</div>
+          </div>
+          <form class="chat-compose" id="chatForm"><label class="sr-only" for="chatInput">Message Bloom</label><input id="chatInput" maxlength="500" placeholder="Write what’s on your mind…" autocomplete="off" /><button aria-label="Send message" type="submit">↑</button></form>
+          <p class="chat-note">Bloom is not a therapist or emergency service.</p>
+        </section>
+
+        <section class="screen" id="patterns" aria-labelledby="patternsTitle">
+          <button class="back-button" data-target="home">← Back</button>
+          <p class="eyebrow">YOUR CHECK-IN HISTORY</p><h1 id="patternsTitle">Small patterns,<br />useful clues.</h1>
+          <article class="insight-card"><span class="insight-symbol">◒</span><div><p class="eyebrow">GENTLE OBSERVATION</p><h2 id="patternHeadline">Keep checking in to discover your patterns.</h2><p id="patternCopy">After a few more entries, Bloom can notice trends in your week.</p></div></article>
+          <div class="section-heading"><h2>Recent check-ins</h2></div><div id="historyList" class="history-list"></div>
+        </section>
+
+        <section class="screen" id="privacy" aria-labelledby="privacyTitle">
+          <button class="back-button" data-target="home">← Back</button>
+          <p class="eyebrow">YOU ARE IN CONTROL</p><h1 id="privacyTitle">Your privacy</h1>
+          <article class="privacy-card"><div><h2>Help improve research</h2><p>Share anonymous mood trends to help approved researchers learn about student wellbeing. Never share notes, chats, name, or contact details.</p></div><label class="switch"><input id="researchConsent" type="checkbox" /><span></span><span class="sr-only">Share anonymous research data</span></label></article>
+          <p class="privacy-detail">You can change this at any time. Your daily check-ins and reflections are stored only on this device in this prototype.</p>
+          <button class="danger-link" id="eraseData">Erase all my data</button>
+        </section>
+
+        <section class="screen emergency-screen" id="support" aria-labelledby="supportTitle">
+          <button class="back-button light" data-target="home">← Back</button>
+          <span class="emergency-icon">♡</span><p class="eyebrow">YOU DESERVE SUPPORT</p><h1 id="supportTitle">You don’t have to go through this alone.</h1>
+          <p class="support-copy">If you might hurt yourself or feel in immediate danger, please contact local emergency services now, or talk to a trusted adult nearby.</p>
+          <a class="support-action" href="tel:112">Call emergency services <span>→</span></a>
+          <a class="support-action secondary" href="https://findahelpline.com" target="_blank" rel="noreferrer">Find a local helpline <span>↗</span></a>
+          <p class="support-footnote">If you are at school, a teacher, counsellor, or family member can help you find support too.</p>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-target="home"><span>⌂</span>Home</button>
+        <button class="nav-item" data-target="chat"><span>◌</span>Talk</button>
+        <button class="nav-item" data-target="patterns"><span>⌁</span>Patterns</button>
+      </nav>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
