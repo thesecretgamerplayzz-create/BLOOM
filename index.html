@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f7f4ec">
   <meta name="description" content="Bloom — your private wellbeing companion">
 
-  <title>Bloom — Mental Buddy</title>
+  <title>BlueNote</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +23,13 @@
 <header class="topbar">
 
   <button class="brand" data-target="home">
-    <span class="brand-mark">✦</span>
-    bloom
+    <span class="brand-dot"></span>
+    BlueNote
   </button>
 
   <div class="top-actions">
-    <button class="icon-button" id="themeButton" aria-label="Toggle theme">☾</button>
-    <button class="icon-button" id="settingsButton" aria-label="Settings">⚙</button>
+    <button class="icon-button" id="themeButton" aria-label="Toggle theme">-</button>
+    <button class="icon-button" id="settingsButton" aria-label="Settings">=</button>
   </div>
 
 </header>
@@ -45,38 +45,38 @@
   <h1>How are you<br>feeling today?</h1>
 
   <p class="intro">
-    There is no right answer. Pick the one that feels closest.
+    How is today going
   </p>
 
   <div class="mood-grid">
 
     <button class="mood-card" data-mood="great" data-label="Great" data-score="5">
-      <span class="mood-face">✦</span>
+      <span class="mood-face">*</span>
       <span>Great</span>
     </button>
 
     <button class="mood-card" data-mood="good" data-label="Good" data-score="4">
-      <span class="mood-face">☀</span>
+      <span class="mood-face">O</span>
       <span>Good</span>
     </button>
 
     <button class="mood-card" data-mood="okay" data-label="Okay" data-score="3">
-      <span class="mood-face">●</span>
+      <span class="mood-face">O</span>
       <span>Okay</span>
     </button>
 
     <button class="mood-card" data-mood="low" data-label="Low" data-score="2">
-      <span class="mood-face">☁</span>
+      <span class="mood-face">~</span>
       <span>Low</span>
     </button>
 
     <button class="mood-card" data-mood="anxious" data-label="Anxious" data-score="2">
-      <span class="mood-face">≈</span>
+      <span class="mood-face">~</span>
       <span>Anxious</span>
     </button>
 
     <button class="mood-card" data-mood="rough" data-label="Rough" data-score="1">
-      <span class="mood-face">☂</span>
+      <span class="mood-face">/</span>
       <span>Rough</span>
     </button>
 
@@ -87,14 +87,14 @@
 
     <div class="tag-grid" id="moodFactors">
 
-      <button class="tag" data-factor="Sleep">😴 Sleep</button>
-      <button class="tag" data-factor="School">📚 School</button>
-      <button class="tag" data-factor="Work">💼 Work</button>
-      <button class="tag" data-factor="Family">🏠 Family</button>
-      <button class="tag" data-factor="Friends">🫂 Friends</button>
-      <button class="tag" data-factor="Exercise">🏃 Exercise</button>
-      <button class="tag" data-factor="Stress">🌧️ Stress</button>
-      <button class="tag" data-factor="Free time">🌱 Free time</button>
+      <button class="tag" data-factor="Sleep"> Sleep</button>
+      <button class="tag" data-factor="School"> School</button>
+      <button class="tag" data-factor="Work"> Work</button>
+      <button class="tag" data-factor="Family"> Family</button>
+      <button class="tag" data-factor="Friends"> Friends</button>
+      <button class="tag" data-factor="Exercise"> Exercise</button>
+      <button class="tag" data-factor="Stress">️ Stress</button>
+      <button class="tag" data-factor="Free time"> Free time</button>
 
     </div>
   </div>
@@ -110,10 +110,10 @@
 
 <section class="screen" id="reflection">
 
-  <button class="back-button" data-target="checkin">← Back</button>
+  <button class="back-button" data-target="checkin">< Back</button>
 
   <div class="selected-mood">
-    <span id="selectedMoodIcon">☀</span>
+    <span id="selectedMoodIcon">O</span>
     <span id="selectedMoodText">Good</span>
   </div>
 
@@ -133,7 +133,7 @@
     <span id="characterCount">0 / 500</span>
 
     <button class="primary-button" id="saveCheckin">
-      Save check-in →
+      Save check-in >
     </button>
 
   </div>
@@ -148,12 +148,12 @@
   <div class="home-greeting">
 
     <div>
-      <p class="eyebrow">YOUR LITTLE SPACE</p>
+      <p class="eyebrow">DASHBOARD</p>
       <h1>Hi <span id="homeName">there</span>,</h1>
     </div>
 
     <div class="streak-pill">
-      🔥 <strong id="streakCount">0</strong> day
+       <strong id="streakCount">0</strong> day
     </div>
 
   </div>
@@ -165,12 +165,12 @@
     <p>Today you felt</p>
 
     <h2>
-      <span id="todayMoodIcon">☀</span>
+      <span id="todayMoodIcon">O</span>
       <span id="todayMoodLabel">Not checked in</span>
     </h2>
 
     <p class="small" id="todayReflection">
-      Every small check-in matters.
+      Nice. You logged today.
     </p>
 
     <button class="quiet-button" id="editCheckin">
@@ -180,49 +180,49 @@
   </article>
 
   <h2 class="home-section-title">
-    What do you need right now?
+    Pick something
   </h2>
 
   <div class="quick-grid">
 
     <button class="quick-card" data-target="chat">
-      <span>🫂</span>
+      <span></span>
       <strong>Talk</strong>
       <small>Talk to Buddy</small>
     </button>
 
     <button class="quick-card" data-target="calm">
-      <span>🌬️</span>
+      <span>️</span>
       <strong>Calm</strong>
       <small>Breathe & relax</small>
     </button>
 
     <button class="quick-card" data-target="journal">
-      <span>📔</span>
+      <span></span>
       <strong>Journal</strong>
       <small>Write your thoughts</small>
     </button>
 
     <button class="quick-card" data-target="reframe">
-      <span>💭</span>
+      <span></span>
       <strong>Reframe</strong>
       <small>Change perspective</small>
     </button>
 
     <button class="quick-card" data-target="goals">
-      <span>🎯</span>
+      <span></span>
       <strong>Goals</strong>
       <small>Small steps</small>
     </button>
 
     <button class="quick-card" data-target="sleep">
-      <span>🌙</span>
+      <span></span>
       <strong>Sleep</strong>
       <small>Wind down</small>
     </button>
 
     <button class="quick-card" data-target="grounding">
-      <span>🧘</span>
+      <span></span>
       <strong>Ground</strong>
       <small>5-4-3-2-1</small>
     </button>
@@ -239,7 +239,7 @@
 
     <div class="section-heading">
       <h2>Your wellbeing</h2>
-      <button class="small-link" data-target="patterns">View details →</button>
+      <button class="small-link" data-target="patterns">View details ></button>
     </div>
 
     <div class="progress-row">
@@ -267,7 +267,7 @@
     <div class="nudge-icon">♡</div>
 
     <div>
-      <h3>A thought for you</h3>
+      <h3>Random note</h3>
       <p id="nudgeText">
         You do not have to have it all figured out today.
       </p>
@@ -279,7 +279,7 @@
 
     <div class="section-heading">
       <h2>Recent Bloom moments</h2>
-      <button class="small-link" data-target="timeline">See all →</button>
+      <button class="small-link" data-target="timeline">See all ></button>
     </div>
 
     <div id="timelinePreview"></div>
@@ -316,16 +316,16 @@
 
     <button class="secondary-button" id="newChat">+ New</button>
 
-    <button class="secondary-button" id="searchChatButton">🔎</button>
+    <button class="secondary-button" id="searchChatButton"></button>
 
   </div>
 
   <div class="buddy-selector">
 
-    <button data-personality="calm" class="personality active">🧘 Calm</button>
-    <button data-personality="friendly" class="personality">😊 Friendly</button>
-    <button data-personality="motivator" class="personality">💪 Motivator</button>
-    <button data-personality="student" class="personality">📚 Student</button>
+    <button data-personality="calm" class="personality active"> Calm</button>
+    <button data-personality="friendly" class="personality"> Friendly</button>
+    <button data-personality="motivator" class="personality"> Motivator</button>
+    <button data-personality="student" class="personality"> Student</button>
 
   </div>
 
@@ -359,9 +359,9 @@
       placeholder="Write what's on your mind…"
       autocomplete="off">
 
-    <button type="button" id="voiceButton">🎙️</button>
+    <button type="button" id="voiceButton">️</button>
 
-    <button aria-label="Send" type="submit">↑</button>
+    <button aria-label="Send" type="submit">^</button>
 
   </form>
 
@@ -383,7 +383,7 @@
 
 <section class="screen" id="journal">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">PRIVATE JOURNAL</p>
 
@@ -424,7 +424,7 @@
 
 <section class="screen calm-screen" id="calm">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">CALM SPACE</p>
 
@@ -449,9 +449,9 @@
   </button>
 
   <div class="calm-tips">
-    <div>🌬️ Breathe slowly</div>
-    <div>🫶 Relax your shoulders</div>
-    <div>🌱 Focus only on this moment</div>
+    <div>️ Breathe slowly</div>
+    <div> Relax your shoulders</div>
+    <div> Focus only on this moment</div>
   </div>
 
 </section>
@@ -461,7 +461,7 @@
 
 <section class="screen" id="grounding">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">GROUNDING</p>
 
@@ -474,7 +474,7 @@
   <div class="grounding-step" id="groundingStep"></div>
 
   <button class="primary-button" id="groundingNext">
-    I've done it →
+    I've done it >
   </button>
 
 </section>
@@ -484,7 +484,7 @@
 
 <section class="screen" id="reframe">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">THOUGHT REFRAMER</p>
 
@@ -500,11 +500,11 @@
     placeholder="Example: I'm going to fail everything…"></textarea>
 
   <button class="primary-button full-button" id="reframeButton">
-    Help me reframe →
+    Help me reframe >
   </button>
 
   <article class="reframe-result" id="reframeResult">
-    <span>💭</span>
+    <span></span>
     <p>Your balanced perspective will appear here.</p>
   </article>
 
@@ -515,7 +515,7 @@
 
 <section class="screen" id="goals">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">SMALL STEPS</p>
 
@@ -549,7 +549,7 @@
 
 <section class="screen sleep-screen" id="sleep">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">NIGHT MODE</p>
 
@@ -557,7 +557,7 @@
 
   <div class="sleep-card">
 
-    <span>🌙</span>
+    <span></span>
 
     <h2>Leave today behind.</h2>
 
@@ -611,7 +611,7 @@
 
 <section class="screen" id="focus">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">FOCUS SPACE</p>
 
@@ -645,7 +645,7 @@
 
 <section class="screen" id="games">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">MINI WELLNESS</p>
 
@@ -654,19 +654,19 @@
   <div class="game-grid">
 
     <button class="game-card" id="gratitudeGame">
-      💛
+      
       <strong>Gratitude</strong>
       <small>Think of something good.</small>
     </button>
 
     <button class="game-card" id="positiveGame">
-      🌱
+      
       <strong>Positive word</strong>
       <small>Choose a word for today.</small>
     </button>
 
     <button class="game-card" id="breathingGame">
-      🌬️
+      ️
       <strong>Breathing</strong>
       <small>One peaceful minute.</small>
     </button>
@@ -684,7 +684,7 @@
 
 <section class="screen" id="patterns">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">YOUR PROGRESS</p>
 
@@ -747,7 +747,7 @@
 
 <section class="screen" id="timeline">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">BLOOM TIMELINE</p>
 
@@ -766,7 +766,7 @@
 
 <section class="screen" id="achievements">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">LITTLE WINS</p>
 
@@ -781,7 +781,7 @@
 
 <section class="screen" id="privacy">
 
-  <button class="back-button" data-target="home">← Back</button>
+  <button class="back-button" data-target="home">< Back</button>
 
   <p class="eyebrow">YOU ARE IN CONTROL</p>
 
@@ -868,9 +868,9 @@
 
     <div class="theme-grid">
 
-      <button class="theme-choice" data-theme="light">☀️ Light</button>
-      <button class="theme-choice" data-theme="dark">🌙 Dark</button>
-      <button class="theme-choice" data-theme="sage">🌱 Sage</button>
+      <button class="theme-choice" data-theme="light">O Light</button>
+      <button class="theme-choice" data-theme="dark"> Dark</button>
+      <button class="theme-choice" data-theme="sage"> Sage</button>
 
     </div>
 
@@ -888,11 +888,11 @@
   <div class="settings-actions">
 
     <button class="secondary-button full-button" id="exportData">
-      📦 Export all my data
+       Export all my data
     </button>
 
     <label class="secondary-button full-button import-button">
-      📥 Import backup
+       Import backup
       <input type="file" id="importData" accept=".json">
     </label>
 
@@ -909,7 +909,7 @@
 
 <section class="screen emergency-screen" id="support">
 
-  <button class="back-button light" data-target="home">← Back</button>
+  <button class="back-button light" data-target="home">< Back</button>
 
   <span class="emergency-icon">♡</span>
 
@@ -925,7 +925,7 @@
 
   <a class="support-action" href="tel:112">
     Call emergency services
-    <span>→</span>
+    <span>></span>
   </a>
 
   <a
@@ -950,22 +950,22 @@
 <nav class="bottom-nav">
 
   <button class="nav-item active" data-target="home">
-    <span>⌂</span>
+    <span>#</span>
     Home
   </button>
 
   <button class="nav-item" data-target="chat">
-    <span>◌</span>
+    <span>O</span>
     Talk
   </button>
 
   <button class="nav-item" data-target="journal">
-    <span>▤</span>
+    <span>[]</span>
     Journal
   </button>
 
   <button class="nav-item" data-target="patterns">
-    <span>⌁</span>
+    <span>=</span>
     Progress
   </button>
 
